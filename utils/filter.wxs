@@ -1,0 +1,134 @@
+var filter = {
+  /**
+   * [formatMoney 格式化金钱]
+   */
+  formatMoney: function(val) {
+    if (!val) {
+      return "--";
+    }
+    if (val) {
+      return Number(val / 100).toFixed(2);
+    } else {
+      return "0.00";
+    }
+  },
+  /**
+   * [formatMoney 格式化金钱]
+   */
+  formatMoneyW: function(val) {
+    if (!val) {
+      return "--";
+    }
+    if (val) {
+      return Number(val / 100 / 10000).toFixed(2);
+    } else {
+      return "0.00";
+    }
+  },
+  /**
+   * [时间戳转换]
+   * timsta:时间戳
+   * type：需要输出的格式
+   *
+   */
+  formatePhpTime: function(timsta, type) {
+    if (!timsta || timsta <= 0) {
+      return "--";
+    }
+    var date = getDate(timsta * 1000); //获取一个时间对象  注意：如果是uinx时间戳记得乘于1000。比如php函数time()获得的时间戳就要乘于1000
+    var Y = date.getFullYear() + "-";
+    var M =
+      (date.getMonth() + 1 < 10
+        ? "0" + (date.getMonth() + 1)
+        : date.getMonth() + 1) + "-";
+    var D = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " ";
+    var h =
+      (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":";
+    var m =
+      (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) +
+      ":";
+    var mEnd =
+      date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+    var s =
+      date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+    var newTime = "";
+    switch (type) {
+      case "YYYY-MM-DD":
+        newTime = Y + M + D;
+        break;
+      case "YYYY-MM-DD h:m:s":
+        newTime = Y + M + D + h + m + s;
+        break;
+      case "YYYY-MM-DD h:m":
+        newTime = Y + M + D + h + mEnd;
+        break;
+    }
+    return newTime;
+  },
+  /**
+   * 截取字符串  多余的用...代替
+   */
+  formatStr: function(str, length) {
+    if (!str) {
+      return "";
+    }
+    if (str.length <= length) {
+      return str;
+    } else {
+      return str.substring(0, length) + "...";
+    }
+  },
+  /**
+   * 空值用--代替
+   */
+  formatHasValue: function(str) {
+    if (!str) {
+      return "--";
+    } else {
+      return str;
+    }
+  },
+  /**
+   * 0：是，1：否
+   */
+  formatTrueFalse: function(str) {
+    if (str == 0) {
+      return "否";
+    } else if (str == 1) {
+      return "是";
+    } else {
+      return str;
+    }
+  },
+  formatPercent: function(val) {
+    if (!val || val == undefined || val == "-1") {
+      return "--";
+    } else {
+      return Number(val * 100).toFixed(2) + "%";
+      // return val;
+    }
+  },
+  secondsTominutes: function(val, type) {
+    //type seconds  精确到秒
+    if (val) {
+      if (type == "seconds") {
+        return Number(val / 60).toFixed(2);
+      } else {
+        return parseInt(val / 60);
+      }
+    } else {
+      return "--";
+    }
+  }
+};
+
+module.exports = {
+  formatMoney: filter.formatMoney,
+  formatMoneyW: filter.formatMoneyW,
+  formatePhpTime: filter.formatePhpTime,
+  formatStr: filter.formatStr,
+  formatHasValue: filter.formatHasValue,
+  formatTrueFalse: filter.formatTrueFalse,
+  formatPercent: filter.formatPercent,
+  secondsTominutes: filter.secondsTominutes
+};
