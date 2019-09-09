@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<!--引入骨架屏模版 -->
+<skeleton wx:if="{{showSkeleton}}"></skeleton>
+<view class="skeleton">
+
+  <view class="head skeleton-radius">绘制圆形</view>
+  <view class="skeleton-rect">绘制矩形</view>
+  <view class="skeleton-rect">skeleton-rect</view>
+
+</view>

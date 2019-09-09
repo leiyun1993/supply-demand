@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/buycar/buycar",
+    "pages/me/me"
+  ],
+  "usingComponents": {
+    "skeleton": "/components/skeleton/skeleton"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#1a1a1a",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/home_def.png",
+        "selectedIconPath": "/images/home_active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "/images/category_def.png",
+        "selectedIconPath": "/images/category_active.png"
+      },
+      {
+        "pagePath": "pages/buycar/buycar",
+        "text": "购物车",
+        "iconPath": "/images/car_def.png",
+        "selectedIconPath": "/images/car_active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "/images/me_def.png",
+        "selectedIconPath": "/images/me_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
